@@ -19,5 +19,3 @@ VALUES (1, 'Human Resources'), (2, 'Development'), (3, 'Sales');
 INSERT INTO Employees (EmployeeID, FirstName, LastName, DepartmentID)
 VALUES (1, 'John', 'Doe', 1), (2, 'Jane', 'Smith', 2), (3, 'Emily', 'Jones', 3);
 
-
-DROP TABLE films 
