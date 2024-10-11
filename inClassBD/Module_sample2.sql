@@ -20,7 +20,7 @@ TASk:
 CREATE TABLE Employee (
     id INT PRIMARY KEY,
     name VARCHAR(50),
-    sex Char(2),
+    gender Char(2),
     salary INT
 );
 
