@@ -17,12 +17,6 @@ TASk:
 промежуточных временных таблиц.
 
 ------------------------------------------------------------------------
-CREATE TABLE Employee (
-    id INT PRIMARY KEY,
-    name VARCHAR(50),
-    gender Char(2),
-    salary INT
-);
 
 -- (CASE  WHEN 'm'  'f' ELSE 'm' END)
 
@@ -52,11 +46,22 @@ Output:
 (2, B) и (4, D) были изменены с "f" на "m".
 
 
+-- Createing table
+CREATE TABLE Employee (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    sex Char(2),
+    salary INT
+);
+
+-- Inserting into table
+INSERT INTO Employee (id, name, sex, salary) VALUES
+(1, 'A', 'm', 2500),
+(2, 'B', 'f', 1500),
+(3, 'C', 'm', 5500),
+(4, 'D', 'f', 500);
+
+
 -- Solution
 UPDATE Employee 
-SET gender = (
-    CASE gender 
-        WHEN 'm' 
-        THEN 'f' 
-        ELSE 'm' 
-    END)
+SET gender = (CASE gender WHEN 'm' THEN 'f' ELSE 'm' END)
