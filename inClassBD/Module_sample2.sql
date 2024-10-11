@@ -17,6 +17,14 @@ TASk:
 промежуточных временных таблиц.
 
 ------------------------------------------------------------------------
+CREATE TABLE Employee (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    sex Char(2),
+    salary INT
+);
+
+-- (CASE  WHEN 'm'  'f' ELSE 'm' END)
 
 Table sample:
 Salary table:
