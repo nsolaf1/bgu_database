@@ -50,3 +50,13 @@ Output:
 Объяснение: 
 (1, A) и (3, C) были изменены с "m" на "f".
 (2, B) и (4, D) были изменены с "f" на "m".
+
+
+-- Solution
+UPDATE Employee 
+SET gender = (
+    CASE gender 
+        WHEN 'm' 
+        THEN 'f' 
+        ELSE 'm' 
+    END)
