@@ -1,6 +1,6 @@
---Module 2/7 50%
+--Module 2/7 20%
 
---HINT 
+----ПОДСКАЗКА - погуглите их, чтобы найти решение 
  --   Left Join
  --   Where
 
@@ -76,3 +76,36 @@ Output: Выходные данные таблицы
     | John | null  |
     | Dan  | 500   |
     +------+-------+
+
+-----------------------------------------------------------------------------------------------------------
+
+-- Create Employee Table
+CREATE TABLE Employee (
+    empId INT PRIMARY KEY,         -- empId is the primary key
+    name VARCHAR(50),              -- name of the employee
+    supervisor INT,                -- supervisor's empId (can be NULL)
+    salary INT,                    
+    FOREIGN KEY (supervisor) REFERENCES Employee(empId) -- self-referencing foreign key for supervisor
+);
+
+-- Insert data into Employee Table
+INSERT INTO Employee (empId, name, supervisor, salary)
+VALUES
+    (3, 'Brad', NULL, 4000),
+    (1, 'John', 3, 1000),
+    (2, 'Dan', 3, 2000),
+    (4, 'Thomas', 3, 4000);
+
+
+INSERT INTO Bonus (empId, bonus)
+VALUES
+    (2, 500),
+    (4, 2000),
+
+
+-- решение задачи
+--Module 2
+-----------------------------------------------------------------------------------------------------------
+SELECT Employee.name,Bonus.bonus FROM Employee 
+LEFT JOIN Bonus ON Employee.empID = Bonus.empID
+WHERE bonus < 1000 OR Bonus IS NULL ;

@@ -1,6 +1,6 @@
---Module 4/7 50%
+--Module 4/7 20%
 
---HINT 
+----ПОДСКАЗКА - погуглите их, чтобы найти решение 
  --   Group BY
  --   Having Count()
  --   Distinct
@@ -77,6 +77,7 @@ Output:
 
 
 
+
 -----------------------------------------------------------------------------------------------------------
 --Query for creating the following Tables and Adding data
 -- Create Product table
@@ -107,3 +108,9 @@ VALUES
 (3, 6),
 (1, 6);
 
+-- решение задачи
+--Module 4
+-----------------------------------------------------------------------------------------------------------
+select customer_id from customer
+group by 1
+having count(distinct product_key) = (select count(product_key) from product)

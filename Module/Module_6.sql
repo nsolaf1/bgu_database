@@ -1,6 +1,6 @@
---Module 6/7  10%
+--Module 6/7  20%
 
---HINT
+----ПОДСКАЗКА - погуглите их, чтобы найти решение
     -- JOIN
     -- WHERE
 
@@ -69,3 +69,16 @@ VALUES
 
 
 -----------------------------------------------------------------------------------------------------------
+-- решение задачи
+--Module 6
+-----------------------------------------------------------------------------------------------------------
+select a.name as Employee  from employee a ,employee b
+where a.managerId = b.id and a.salary > b.salary
+
+--- ИЛИ
+
+SELECT e.name AS "Employee"
+FROM Employee e
+JOIN Employee m ON e.managerId = m.id
+WHERE e.salary < m.salary;
+
