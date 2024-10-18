@@ -1,72 +1,68 @@
---Module 1/7 50%
 
---HINT 
- --   WHERE
- --   NOT IN
+# README for Module 1/7: Identifying Customers Who Have Never Placed an Order
 
- -----------------------------------------------------------------------------------------------------------
+---
 
-ВАША ЗАДАЧА: 
+## Task Objective:
+You are required to write an SQL query that finds all customers who have **never** placed an order.
 
-Напишите решение, позволяющее найти всех клиентов, которые никогда ничего не заказывают.
+## Hints:
+- Use the SQL clauses `WHERE` and `NOT IN` to solve this task.
 
------------------------------------------------------------------------------------------------------------
+---
 
-Table: Customers
-    +-------------+---------+
-    | Column Name | Type    |
-    +-------------+---------+
-    | id          | int     |
-    | name        | varchar |
-    +-------------+---------+
+## Database Structure:
 
-id - это первичный ключ (столбец с уникальными значениями) для этой таблицы.
-В каждой строке этой таблицы указаны ID и имя клиента.
+### Table: `Customers`
+| Column Name | Type    |
+|-------------|---------|
+| id          | int     |
+| name        | varchar |
 
+- **id**: The primary key for the `Customers` table, a unique identifier for each customer.
+- **name**: Stores the name of the customer.
 
-Table: Orders
-    +-------------+------+
-    | Column Name | Type |
-    +-------------+------+
-    | id          | int  |
-    | customerId  | int  |
-    +-------------+------+
+### Table: `Orders`
+| Column Name | Type |
+|-------------|------|
+| id          | int  |
+| customerId  | int  |
 
-ENG - id is the primary key (column with unique values) for this table.
-    customerId is a foreign key (reference columns) of the ID from the Customers table.
-    Each row of this table indicates the ID of an order and the ID of the customer who ordered it.
+- **id**: The primary key for the `Orders` table, a unique identifier for each order.
+- **customerId**: A foreign key referencing the `id` column from the `Customers` table, indicating which customer placed the order.
 
-RUS - id - это первичный ключ (столбец с уникальными значениями) для этой таблицы.
-    CustomerID - foreign key (ссылочные столбцы) идентификатора(id) из таблицы Customers.
-    Каждая строка этой таблицы указывает идентификатор заказа и идентификатор(id) клиента, который его заказал.
+---
 
+## Example:
 
------------------------------------------------------------------------------------------------------------
+### Customers table:
+| id  | name  |
+|-----|-------|
+| 1   | Joe   |
+| 2   | Henry |
+| 3   | Sam   |
+| 4   | Max   |
 
-Input: Содержание таблицы
+### Orders table:
+| id  | customerId |
+|-----|------------|
+| 1   | 3          |
+| 2   | 1          |
 
-Customers table:
-    +----+-------+
-    | id | name  |
-    +----+-------+
-    | 1  | Joe   |
-    | 2  | Henry |
-    | 3  | Sam   |
-    | 4  | Max   |
-    +----+-------+
+### Expected Output:
+| Customers |
+|-----------|
+| Henry     |
+| Max       |
 
-Orders Table:
-    +----+------------+
-    | id | customerId |
-    +----+------------+
-    | 1  | 3          |
-    | 2  | 1          |
-    +----+------------+
+---
 
-Output: Выходные данные таблицы
-    +-----------+
-    | Customers |
-    +-----------+
-    | Henry     |
-    | Max       |
-    +-----------+
+## SQL Query Example:
+
+```sql
+SELECT name
+FROM Customers
+WHERE id NOT IN (SELECT customerId FROM Orders);
+```
+
+This query returns the names of customers who are **not** found in the `Orders` table, indicating they have never placed an order.
