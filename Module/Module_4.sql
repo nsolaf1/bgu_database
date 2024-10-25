@@ -79,38 +79,4 @@ Output:
 
 
 -----------------------------------------------------------------------------------------------------------
---Query for creating the following Tables and Adding data
--- Create Product table
-CREATE TABLE Product (
-    product_key INT PRIMARY KEY
-);
-
--- Create Customer table
-CREATE TABLE Customer (
-    customer_id INT NOT NULL,
-    product_key INT,
-    FOREIGN KEY (product_key) REFERENCES Product(product_key)
-);
-
--- Insert data into Product table
-INSERT INTO Product (product_key)
-VALUES
-(5),
-(6);
-
-
--- Insert data into Customer table
-INSERT INTO Customer (customer_id, product_key)
-VALUES
-(1, 5),
-(2, 6),
-(3, 5),
-(3, 6),
-(1, 6);
-
--- решение задачи
---Module 4
------------------------------------------------------------------------------------------------------------
-select customer_id from customer
-group by 1
-having count(distinct product_key) = (select count(product_key) from product)
+-
